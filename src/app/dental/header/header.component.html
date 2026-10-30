@@ -1,0 +1,45 @@
+<header class="bar" [class.scrolled]="scrolled() || open()">
+  <div class="container bar-inner">
+    <a href="#top" class="logo" (click)="close()" aria-label="F Dental Center">
+      <fd-icon name="tooth" [stroke]="2" class="logo-mark" />
+      <span class="logo-text">F Dental <small>Center</small></span>
+    </a>
+
+    <nav class="nav" aria-label="Main">
+      <a href="#services">{{ t().nav.services }}</a>
+      <a href="#doctors">{{ t().nav.doctors }}</a>
+      <a href="#prices">{{ t().nav.prices }}</a>
+      <a href="#contacts">{{ t().nav.contacts }}</a>
+    </nav>
+
+    <div class="right">
+      <div class="langs" role="group" aria-label="Language">
+        @for (l of i18n.langs; track l.code) {
+          <button type="button" [class.active]="i18n.lang() === l.code" [attr.aria-pressed]="i18n.lang() === l.code"
+            (click)="setLang(l.code)">{{ l.label }}</button>
+        }
+      </div>
+
+      <a href="#booking" class="btn-light hide-sm">
+        {{ t().hero.book }} <fd-icon name="arrowRight" class="flip-rtl" />
+      </a>
+
+      <button type="button" class="burger glass" (click)="toggle()" [attr.aria-expanded]="open()"
+        [attr.aria-label]="t().nav.menu">
+        <fd-icon [name]="open() ? 'close' : 'menu'" />
+      </button>
+    </div>
+  </div>
+
+  @if (open()) {
+    <div class="drawer container">
+      <nav class="drawer-panel glass">
+        <a href="#services" (click)="close()">{{ t().nav.services }} <fd-icon name="arrow" class="flip-rtl" /></a>
+        <a href="#doctors" (click)="close()">{{ t().nav.doctors }} <fd-icon name="arrow" class="flip-rtl" /></a>
+        <a href="#prices" (click)="close()">{{ t().nav.prices }} <fd-icon name="arrow" class="flip-rtl" /></a>
+        <a href="#contacts" (click)="close()">{{ t().nav.contacts }} <fd-icon name="arrow" class="flip-rtl" /></a>
+        <a href="#booking" class="btn-pill" (click)="close()">{{ t().hero.cta }}</a>
+      </nav>
+    </div>
+  }
+</header>

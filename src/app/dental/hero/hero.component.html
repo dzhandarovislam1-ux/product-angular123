@@ -1,0 +1,79 @@
+<section class="hero" id="top">
+  <!-- Размытое фото кабинета клиники на фоне -->
+  <img class="scene-photo" src="images/clinic/cabinet.webp" alt="" aria-hidden="true" fetchpriority="high" />
+  <div class="tint" aria-hidden="true"></div>
+
+  <div class="glow" aria-hidden="true"></div>
+
+  <div class="container content">
+    <h1 class="title">
+      <span class="line">{{ t().hero.title1 }}</span>
+      <span class="line"><span class="grad">{{ t().hero.title2Accent }}</span> {{ t().hero.title2Rest }}</span>
+    </h1>
+
+    <div class="center">
+      <!-- Дуга, на которой «висят» преимущества -->
+      <svg class="arc" viewBox="0 0 1000 260" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M10 250 Q500 -120 990 250" fill="none" stroke="url(#fd-arc)" stroke-width="1.2" />
+        <defs>
+          <linearGradient id="fd-arc" x1="0" x2="1">
+            <stop offset="0" stop-color="#b5f0da" stop-opacity="0" />
+            <stop offset="0.5" stop-color="#b5f0da" stop-opacity="0.55" />
+            <stop offset="1" stop-color="#b5f0da" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <ul class="features features-start">
+        @for (f of t().hero.features.slice(0, 2); track $index) {
+          <li class="feature glass">
+            <span class="f-ico"><fd-icon [name]="f.icon" [stroke]="1.8" /></span>
+            <span>{{ f.label }}</span>
+          </li>
+        }
+      </ul>
+
+      <div class="tooth-stage" aria-hidden="true">
+        <span class="halo"></span>
+        <span class="halo halo-2"></span>
+        <svg class="tooth" viewBox="0 0 200 240">
+          <defs>
+            <radialGradient id="fd-glass" cx="0.4" cy="0.3" r="0.85">
+              <stop offset="0" stop-color="#ffffff" stop-opacity="0.98" />
+              <stop offset="0.45" stop-color="#e3fbf2" stop-opacity="0.9" />
+              <stop offset="0.8" stop-color="#9ce9cf" stop-opacity="0.75" />
+              <stop offset="1" stop-color="#4fd3a8" stop-opacity="0.7" />
+            </radialGradient>
+            <linearGradient id="fd-rim" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff" />
+              <stop offset="1" stop-color="#7ff5cc" />
+            </linearGradient>
+            <filter id="fd-soft"><feGaussianBlur stdDeviation="4" /></filter>
+          </defs>
+          <path
+            d="M40 34C38 8 74 2 100 17 126 2 162 8 160 34c2 30-2 58-9 78-4 26-7 50-13 78-5 22-19 34-25 10-4-18-5-38-13-42-8 4-9 24-13 42-6 24-20 12-25-10-6-28-9-52-13-78-7-20-11-48-9-78z"
+            fill="url(#fd-glass)" stroke="url(#fd-rim)" stroke-width="2" />
+          <path d="M82 22c8 7 28 7 36 0" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+          <ellipse cx="70" cy="60" rx="14" ry="32" fill="#ffffff" opacity="0.85" filter="url(#fd-soft)" />
+          <ellipse cx="128" cy="120" rx="8" ry="40" fill="#ffffff" opacity="0.35" filter="url(#fd-soft)" />
+        </svg>
+      </div>
+
+      <ul class="features features-end">
+        @for (f of t().hero.features.slice(2); track $index) {
+          <li class="feature glass">
+            <span class="f-ico"><fd-icon [name]="f.icon" [stroke]="1.8" /></span>
+            <span>{{ f.label }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="bottom">
+      <p class="lead">{{ t().hero.lead }}</p>
+      <a href="#booking" class="btn-pill">
+        {{ t().hero.cta }} <fd-icon name="arrowRight" class="flip-rtl" />
+      </a>
+    </div>
+  </div>
+</section>

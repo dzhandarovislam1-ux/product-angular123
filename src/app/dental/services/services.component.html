@@ -1,0 +1,29 @@
+<section class="section" id="services">
+  <div class="container">
+    <div class="sec-head">
+      <span>{{ t().services.label }}</span>
+      <span class="sec-num">(03)</span>
+    </div>
+    <h2 class="sec-title" fdReveal>
+      {{ t().services.title }}
+      <span class="soft">{{ t().services.titleSoft }}</span>
+    </h2>
+
+    <div class="cards">
+      @for (s of t().services.items; track $index) {
+        <a href="#booking" class="card glass" [fdReveal]="($index % 4) * 80">
+          <div class="top">
+            <span class="ico"><fd-icon [name]="icons[$index]" /></span>
+            <span class="idx">0{{ $index + 1 }}</span>
+          </div>
+          <h3>{{ s.title }}</h3>
+          <p>{{ s.text }}</p>
+          <div class="foot">
+            <span class="price">{{ s.price }}</span>
+            <span class="go"><fd-icon name="arrow" class="flip-rtl" /></span>
+          </div>
+        </a>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,87 @@
+<section class="section" id="booking">
+  <div class="container">
+    <div class="sec-head">
+      <span>{{ t().booking.label }}</span>
+      <span class="sec-num">(09)</span>
+    </div>
+
+    <div class="layout">
+      <div class="intro" fdReveal>
+        <h2 class="sec-title">
+          {{ t().booking.title }}
+          <span class="soft">{{ t().booking.titleSoft }}</span>
+        </h2>
+        <p class="text">{{ t().booking.text }}</p>
+        <a class="wa" [href]="whatsapp()" target="_blank" rel="noopener">
+          <fd-icon name="whatsapp" /> {{ t().booking.whatsapp }}
+        </a>
+      </div>
+
+      <div class="form-card glass" fdReveal="100">
+        @if (sent()) {
+          <div class="done">
+            <span class="check"><fd-icon name="shield" /></span>
+            <p>{{ t().booking.success }}</p>
+            <button type="button" class="btn-pill" (click)="sent.set(false)">{{ t().booking.again }}</button>
+          </div>
+        } @else {
+          <form (submit)="submit($event)" novalidate>
+            <label>
+              <span>{{ t().booking.name }}</span>
+              <input name="name" required autocomplete="name" />
+            </label>
+            <label>
+              <span>{{ t().booking.phone }}</span>
+              <input name="phone" type="tel" required autocomplete="tel" dir="ltr" placeholder="+20 ..." />
+            </label>
+            <label>
+              <span>{{ t().booking.service }}</span>
+              <select name="service" required>
+                <option value="" disabled selected>{{ t().booking.servicePlaceholder }}</option>
+                @for (s of t().services.items; track $index) {
+                  <option [value]="s.title">{{ s.title }}</option>
+                }
+              </select>
+            </label>
+            <label>
+              <span>{{ t().booking.date }}</span>
+              <input name="date" type="date" [min]="today" />
+            </label>
+            <button type="submit" class="btn-pill submit">
+              {{ t().booking.submit }} <fd-icon name="arrowRight" class="flip-rtl" />
+            </button>
+          </form>
+        }
+      </div>
+    </div>
+
+    <div class="contacts" id="contacts">
+      <div class="info glass" fdReveal>
+        <div class="row">
+          <fd-icon name="pin" />
+          <div>
+            <small>{{ t().booking.address }}</small>
+            <a [href]="clinic.mapLink" target="_blank" rel="noopener">{{ t().booking.addressValue }}</a>
+          </div>
+        </div>
+        <div class="row">
+          <fd-icon name="phone" />
+          <div>
+            <small>{{ t().booking.phoneLabel }}</small>
+            <a [href]="clinic.phoneHref" dir="ltr">{{ clinic.phoneDisplay }}</a>
+          </div>
+        </div>
+        <div class="row">
+          <fd-icon name="clock" />
+          <div>
+            <small>{{ t().booking.hours }}</small>
+            <span>{{ t().booking.hoursValue }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="map glass" fdReveal="100">
+        <iframe [src]="mapUrl" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>

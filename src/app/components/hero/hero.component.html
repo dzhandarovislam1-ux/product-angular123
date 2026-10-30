@@ -1,0 +1,28 @@
+<section class="hero ag-fade-in ag-slide-up">
+  <div class="hero__container">
+    <span class="hero__badge">Справочные PDF-материалы для учёбы и быта (Арабский • Коран • Сира)</span>
+    <h1 class="hero__title">Каир без стресса: готовые маршруты и чек‑листы</h1>
+    <p class="hero__subtitle">
+      Спокойная подготовка к переезду и учёбе. В основе каждого материала — маршруты по картам + буфер на пробки + честные риски. Работает офлайн в формате PDF.
+    </p>
+    <div class="hero__actions">
+      <button
+        type="button"
+        class="hero__btn ag-hover-lift"
+        [disabled]="isLoading()"
+        (click)="onActionClick()"
+      >
+        @if (isLoading()) {
+          <span class="hero__spinner" aria-hidden="true"></span>
+          <span>Загружаем каталог PDF...</span>
+        } @else {
+          <span>Выбрать PDF‑материалы</span>
+        }
+      </button>
+      <p class="hero__note">
+        Подписка включает только структурированные офлайн PDF‑гайды. Общая группа в Telegram — открытый бесплатный ресурс.
+      </p>
+    </div>
+  </div>
+</section>
+

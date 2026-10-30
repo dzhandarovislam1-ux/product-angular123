@@ -1,0 +1,81 @@
+.tg-community {
+  padding: 3rem 1.25rem 4rem;
+
+  &__container {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  &__box {
+    background: var(--accent-secondary);
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__tag {
+    display: inline-block;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: rgba(255, 255, 255, 0.14);
+    padding: 0.3rem 0.65rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+
+  &__title {
+    font-size: 1.65rem;
+    margin-bottom: 0.65rem;
+    color: #ffffff;
+  }
+
+  &__text {
+    font-size: 0.96rem;
+    color: rgba(255, 255, 255, 0.88);
+    max-width: 640px;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    background: var(--accent-primary);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.98rem;
+    padding: 0.9rem 1.5rem;
+    border-radius: 8px;
+
+    &:hover .tg-community__icon {
+      transform: rotate(15deg) scale(1.08);
+    }
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.25s ease;
+  }
+
+  @media (min-width: 768px) {
+    padding: 4rem 2rem 5rem;
+
+    &__box {
+      padding: 2.75rem 3rem;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__title {
+      font-size: 2rem;
+    }
+  }
+}
+

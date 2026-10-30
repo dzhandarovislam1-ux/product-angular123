@@ -1,0 +1,66 @@
+<section class="route-demo">
+  <div class="route-demo__container">
+    <div class="route-demo__intro">
+      <h2 class="route-demo__heading">Пример страницы из офлайн PDF‑справочника</h2>
+      <p class="route-demo__sub">
+        Каждый маршрут строится по единому стандарту: маршруты по картам + буфер на пробки + честные риски.
+      </p>
+    </div>
+
+    <div class="route-demo__sheet ag-fade-in">
+      <header class="route-demo__sheet-header">
+        <div>
+          <span class="route-demo__doc-type">PDF-ЛИСТ • МАРШРУТ #01 (ОФЛАЙН)</span>
+          <h3 class="route-demo__route-title">Аэропорт Каира (CAI) → Площадь Тахрир</h3>
+        </div>
+        <span class="route-demo__pulse-badge">
+          <span class="route-demo__pulse-dot" aria-hidden="true"></span>
+          Расчёт по картам + буфер
+        </span>
+      </header>
+
+      <div class="route-demo__grid">
+        <div class="route-demo__block">
+          <h4 class="route-demo__label">Ориентировочно</h4>
+          <p class="route-demo__value">
+            По картам в спокойное время: 35–45 мин. <strong>С буфером на пробки (мост 6 Октября / Рамзес): закладывайте 75–100 мин.</strong>
+          </p>
+        </div>
+
+        <div class="route-demo__block">
+          <h4 class="route-demo__label">Варианты</h4>
+          <p class="route-demo__value">
+            1) Приложения такси (Uber / InDrive) с посадкой у парковки терминала.<br>
+            2) Шаттл аэропорта до узловой автостанции + городской автобус до Abdel Moneim Riad (рядом с Тахрир).
+          </p>
+        </div>
+
+        <div class="route-demo__block route-demo__block--warn">
+          <h4 class="route-demo__label">Риски</h4>
+          <p class="route-demo__value">
+            Возможны предложения поездки без счётчика у выхода из зоны прилёта, просьбы доплатить за въезд на парковку или отсутствие сдачи с крупных купюр (200 EGP).
+          </p>
+        </div>
+
+        <div class="route-demo__block">
+          <h4 class="route-demo__label">Чек‑лист (интерактивное превью)</h4>
+          <ul class="route-demo__checklist">
+            @for (item of checklist(); track item.id) {
+              <li
+                class="route-demo__check-item"
+                [class.route-demo__check-item--done]="item.done"
+                (click)="toggleCheck(item.id)"
+              >
+                <span class="route-demo__checkbox" aria-hidden="true">
+                  {{ item.done ? '✓' : '' }}
+                </span>
+                <span>{{ item.label }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

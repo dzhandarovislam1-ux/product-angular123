@@ -1,0 +1,47 @@
+<section id="pricing-section" class="pricing">
+  <div class="pricing__container">
+    <h2 class="pricing__heading">Подписка на офлайн PDF‑материалы</h2>
+    <p class="pricing__sub">
+      Вы оплачиваете только структурированные PDF‑файлы, которые работают без интернета. Общая Telegram‑группа бесплатна для всех и не входит в стоимость.
+    </p>
+
+    <div class="pricing__grid">
+      @for (tier of tiers(); track tier.id) {
+        <article class="pricing__card ag-hover-lift">
+          <div class="pricing__card-header">
+            <span class="pricing__tag">{{ tier.tag }}</span>
+            <h3 class="pricing__title">{{ tier.title }}</h3>
+            <div class="pricing__price">{{ tier.price }}</div>
+          </div>
+
+          <p class="pricing__desc">{{ tier.description }}</p>
+
+          <ul class="pricing__list">
+            @for (item of tier.features; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+
+          @if (selectedTierId() === tier.id) {
+            <div class="pricing__details ag-fade-in">
+              {{ tier.detailsNote }}
+            </div>
+          }
+
+          <button
+            type="button"
+            class="pricing__btn"
+            (click)="toggleDetails(tier.id)"
+          >
+            {{ selectedTierId() === tier.id ? 'Скрыть детали' : 'Подробнее' }}
+          </button>
+        </article>
+      }
+    </div>
+
+    <p class="pricing__disclaimer">
+      Цены и время указаны ориентировочно. Апдейты — в общей Telegram‑группе.
+    </p>
+  </div>
+</section>
+

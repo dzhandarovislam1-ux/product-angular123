@@ -1,0 +1,35 @@
+<section class="section about" id="about">
+  <div class="container grid">
+    <aside class="aside">
+      <span class="label">{{ t().about.label }}</span>
+      <p class="note">{{ t().about.note }}</p>
+    </aside>
+
+    <div class="main">
+      <span class="num">(01)</span>
+      <p class="statement" fdReveal>
+        <span>{{ t().about.main }}</span>
+        {{ ' ' }}<span class="soft">{{ t().about.soft }}</span>
+      </p>
+
+      <div class="diff-head" fdReveal>
+        <span><fd-icon name="plus" /> {{ t().about.diffTitle }}</span>
+        <span class="count">{{ t().about.diffCount }}</span>
+      </div>
+
+      <div class="stats">
+        @for (s of t().about.stats; track $index) {
+          <article class="stat glass" [fdReveal]="$index * 90">
+            <div class="value">
+              {{ s.value }}
+              @if (s.star) {
+                <fd-icon name="star" class="star" />
+              }
+            </div>
+            <p><strong>{{ s.label }}</strong>{{ s.desc }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </div>
+</section>

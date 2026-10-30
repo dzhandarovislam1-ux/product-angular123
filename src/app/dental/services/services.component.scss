@@ -1,0 +1,121 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  padding: 22px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.45s var(--ease), border-color 0.45s, background 0.45s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: auto -30% -60% -30%;
+    height: 80%;
+    background: radial-gradient(closest-side, rgba(111, 242, 198, 0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.45s;
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.4);
+
+    &::after {
+      opacity: 1;
+    }
+
+    .go {
+      background: #fff;
+      color: var(--ink-800);
+    }
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: auto;
+  padding-bottom: 40px;
+}
+
+.ico {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  font-size: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--accent);
+}
+
+.idx {
+  font-size: 11px;
+  color: var(--text-mute);
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+p {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-bottom: 20px;
+}
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.price {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.go {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  transition: background 0.3s, color 0.3s;
+}
+
+@media (max-width: 1080px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: 0;
+  }
+
+  .top {
+    padding-bottom: 24px;
+  }
+}
